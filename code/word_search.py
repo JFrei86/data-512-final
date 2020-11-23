@@ -1,0 +1,23 @@
+import pandas as pd
+import numpy as np
+import bs4 as bs
+["teamwork", "team-based", "team-environment", "team-player"]
+# load terms
+keywords = []
+
+# load postings
+data = pd.read_csv('./data/data.csv')
+j = len(data['job_description'])
+
+# for each posting, compute the number of terms that are used from the term lists
+for i in range(j):
+    jd = data['job_description'][i]
+    jd_cleaned = bs.BeautifulSoup(jd, features="html.parser")
+    jd_final = jd_cleaned.get_text().lower().split()
+    for term in jd_final:
+        for m in keywords[0]:
+            if term.startswith(m):
+                print(term)
+
+
+    # print(str(data['job_title'][i]).encode("utf-8"),str(masc),str(fem), sep=',')

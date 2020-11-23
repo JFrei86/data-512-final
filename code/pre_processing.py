@@ -9,7 +9,9 @@ fem_terms = pd.read_csv('./terms/terms_f.csv', header=None)
 # load postings
 data = pd.read_csv('./data/data.csv')
 j = len(data['job_description'])
+out = open('./data/calculated_terms.csv', mode='w', encoding="utf8")
 
+print('job_title,masc,fem', file=out)
 # for each posting, compute the number of terms that are used from the term lists
 for i in range(j):
     jd = data['job_description'][i]
@@ -26,4 +28,4 @@ for i in range(j):
             if term.startswith(f):
                 fem += 1
 
-    print(str(data['job_title'][i]).encode("utf-8"),str(masc),str(fem), sep=',')
+    print(str('"' + data['job_title'][i] + '"'),str(masc * 1.0 / len(jd_final)),str(fem * 1.0 / len(jd_final)), sep=',', file=out)
