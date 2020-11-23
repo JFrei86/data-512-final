@@ -28,4 +28,4 @@ for i in range(j):
             if term.startswith(f):
                 fem += 1
 
-    print(str('"' + data['job_title'][i] + '"'),str(masc * 1.0 / len(jd_final)),str(fem * 1.0 / len(jd_final)), sep=',', file=out)
+    print(str('"' + data['job_title'][i] + '"'),str(masc),str(fem), sep=',', file=out)
