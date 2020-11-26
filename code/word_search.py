@@ -15,7 +15,7 @@ for i in range(j):
     jd_cleaned = bs.BeautifulSoup(jd, features="html.parser")
     jd_final = jd_cleaned.get_text().lower().split()
     for term in jd_final:
-        for m in keywords[0]:
+        for m in keywords:
             if term.startswith(m):
                 print(term)
 
